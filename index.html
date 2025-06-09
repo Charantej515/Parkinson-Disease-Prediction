@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parkinson Detection</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #fff);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        background-color: #ffffff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        text-align: center;
+      }
+
+      h2 {
+        color: #00796b;
+        margin-bottom: 20px;
+      }
+
+      input[type="file"] {
+        margin: 15px 0;
+        padding: 10px;
+        border: 2px dashed #b2dfdb;
+        border-radius: 8px;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .btn {
+        background-color: #00796b;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #004d40;
+      }
+
+      .healthy {
+        color: #388e3c;
+        font-weight: 600;
+        font-size: 20px;
+        margin-top: 15px;
+      }
+
+      .parkinson {
+        color: #d32f2f;
+        font-weight: 600;
+        font-size: 20px;
+        margin-top: 15px;
+      }
+
+      img {
+        margin-top: 20px;
+        max-width: 100%;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+          width: 95%;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Parkinson Detection</h2>
+      <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required />
+        <br />
+        <input type="submit" class="btn" value="Upload & Predict" />
+      </form>
+
+      {% if prediction %}
+      <h3>Prediction Result:</h3>
+      {% if prediction == "Healthy" %}
+      <p class="healthy">{{ prediction }}</p>
+      {% else %}
+      <p class="parkinson">{{ prediction }}</p>
+      {% endif %} {% endif %}
+    </div>
+  </body>
+</html>
